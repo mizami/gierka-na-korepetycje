@@ -9,6 +9,6 @@ using namespace std;
 
 int main()
 {
-	cout << "Proba";
+	cout << "Witaj w grze!";
 	return 0;
 }
