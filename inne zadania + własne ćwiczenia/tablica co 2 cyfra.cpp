@@ -1,12 +1,11 @@
 #include <iostream>
 #include <iomanip>
-#include <cstdlib>
 #include <math.h>
-#include <ctime>
+
 
 using namespace std;
 //program bierze podana liczbe i wypisuje co 2 cyfre
-long long liczba (long long l)
+void liczba (long long l)
 {
 		long long zapas;
 		int a[100]={0},licznik=0,liczba_cyfr2=0,dlugosc_liczby=0,zapas_liczba_cyfr2;
