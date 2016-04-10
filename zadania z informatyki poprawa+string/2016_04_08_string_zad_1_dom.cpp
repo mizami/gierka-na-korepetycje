@@ -5,4 +5,6 @@
 // zak³adamy, ¿e w zdania w pliku s¹ zapisane poprawnie
 
 
-// 
+#include <iostream>
+#include <iomanip>
+
