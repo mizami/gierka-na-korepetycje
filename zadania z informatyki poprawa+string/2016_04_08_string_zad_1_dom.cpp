@@ -9,6 +9,9 @@
 #include <fstream>
 #include <algorithm>
 #include <cstring>
+#include <math.h>
+#include <cstdlib>
+#include <string>
 
 using namespace std;
 
@@ -22,15 +25,11 @@ int main()
 	
 		while(!zadanie.eof())
 		{		
-			int dlugosc;
-			dlugosc=zadanie.lenght();
-			char z;
-			z=zadanie.at(dlugosc);
-			cout<<"z = "<<z<<endl;
 			if(liczba_zdan!=1)
 			{
 				liczba_slow++;
-				if(zadanie==".")
+				srednia++;
+				if(zadanie[zadanie.size()-1]=='.')
 				{
 					liczba_zdan++;
 					cout<<"w zdaniu "<<liczba_zdan<<" jest "<<liczba_slow<<" slow."<<endl;
@@ -49,6 +48,8 @@ int main()
 			}
 		}
 	}
+		srednia/=liczba_zdan;
+		cout<<"srednia ilosc slow w zdaniu wynosi: "<<srednia<<endl;
 		zadanie.close();
 		system ("PAUSE");
 		return 0;	
