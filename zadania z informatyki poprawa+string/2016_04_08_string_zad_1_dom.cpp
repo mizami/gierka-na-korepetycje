@@ -15,42 +15,42 @@
 
 using namespace std;
 
+bool czy_kropka(string wyraz)		//sprawdzamy czy kropka
+{
+	return wyraz.at(wyraz.size()-1) == '.';	//zwracamy fa³sz/prawda
+}
+
 int main()
 {
-	int liczba_zdan=0,liczba_slow=0,srednia=0;
-	fstream zadanie;
-	zadanie.open("zaddom1.txt",ios::out);
+	// deklarowanie zmiennych
+	int liczba_zdan=0,liczba_slow=0;			//liczba_zdan=-liczy nam zdania,liczba_slow-liczy s³owa
+	fstream zadanie;							//tworzymy zmienn¹ plikow¹
+	double srednia=0.0; 							//srednia-liczy sredni¹ (double bo liczby po przecinku)
+	zadanie.open("zaddom1.txt",ios::in);
+	string wyraz;
+	
+	//sprawdzenie czy plik siê skoñczy³
 	if(zadanie.good())
 	{
 	
-		while(!zadanie.eof())
+		while(!zadanie.eof()) // pêtla id¹ca do konca pliku
 		{		
-			if(liczba_zdan!=1)
-			{
+				zadanie>>wyraz;	//pobieramy wyraz do stringa
 				liczba_slow++;
-				srednia++;
-				if(zadanie[zadanie.size()-1]=='.')
+				srednia+=1.0;
+				
+				if(czy_kropka(wyraz))		//sprawdzamy czy kropka (niepotrzebne == poniewa¿ bool
 				{
 					liczba_zdan++;
 					cout<<"w zdaniu "<<liczba_zdan<<" jest "<<liczba_slow<<" slow."<<endl;
 					liczba_slow=0;
 				}
-			}
-			else
-			{
-				liczba_slow++;
-				if(zadanie==".")
-				{
-					liczba_zdan++;
-					cout<<"w zdaniu "<<liczba_zdan<<" jest "<<liczba_slow<<" slow."<<endl;
-					liczba_slow=0;
-				}	
-			}
+
 		}
 	}
-		srednia/=liczba_zdan;
-		cout<<"srednia ilosc slow w zdaniu wynosi: "<<srednia<<endl;
-		zadanie.close();
+		srednia /= liczba_zdan;
+		cout<<"srednia ilosc slow w zdaniu wynosi: "<<setprecision(2)<<fixed<<srednia<<endl;
+		zadanie.close();  //zamykamy plik
 		system ("PAUSE");
 		return 0;	
 }
