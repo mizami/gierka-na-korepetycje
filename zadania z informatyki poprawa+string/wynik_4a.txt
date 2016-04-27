@@ -1,0 +1,2 @@
+nieparzyste: 5
+parzyste: 5
