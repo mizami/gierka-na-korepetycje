@@ -5,6 +5,41 @@
 
 using namespace std;
 
+void dodawanie(int *magazyn_jablek, int jakosc)
+{
+	int *magazyn_nowy=new int[magazyn_jablek [0]];
+	for(int i=0;i<=magazyn_jablek[0];i++)
+	{
+		magazyn_nowy[i]=magazyn_jablek[i];
+	}
+	delete [] magazyn_jablek;
+	
+	magazyn_jablek = new int[magazyn_nowy[0]+2];
+	for(int i=0;i<=magazyn_nowy[0];i++)
+	{
+		magazyn_jablek[i]=magazyn_nowy[i];
+	}
+	magazyn_jablek[0]++;
+	magazyn_jablek[magazyn_jablek[0]]=jakosc;	
+}
+
+void usuwanie(int* magazyn_jablek)
+{
+	int *magazyn_nowy=new int[magazyn_jablek [0]];//.......................................................
+	for(int i=0;i<=magazyn_jablek[0];i++)
+	{
+		magazyn_nowy[i]=magazyn_jablek[i];
+	}
+	delete [] magazyn_jablek;
+	
+	magazyn_jablek = new int[magazyn_nowy[0]];
+	for(int i=0;i<magazyn_nowy[0];i++)
+	{
+		magazyn_jablek[i]=magazyn_nowy[i];
+	}
+	magazyn_jablek[0]--;
+}
+
 int main()
 {
 	cout<<"Oto magazyn jablek.\n"
@@ -44,8 +79,8 @@ int main()
 	
 	do
 	{
-		cout<<"d-dodaj jablka\nu-usun jablka\nw-wyswietl ilosc jablek\nk-zakoncz program.\n"
-			<<"co chcesz zrobiæ?: ";
+		cout<<"\nd-dodaj jablka\nu-usun jablka\nw-wyswietl ilosc jablek\nk-zakoncz program.\n"
+			<<"co chcesz zrobiæ?:  ";
 		cin >> c;
 		switch(c)
 		{	
@@ -53,7 +88,7 @@ int main()
 			{
 				char b;
 				int jakosc=0;
-				cout<<"jakie jablko chcesz dodac?\n"
+				cout<<"\njakie jablko chcesz dodac?\n"
 					<<"z-zielone\nc-czerwone\np-pomaranczowe\nr-rozowe\n";
 				cin>>b;
 				cout<<"jakiej jakosci ma byc to jablko (1-5)";
@@ -62,81 +97,26 @@ int main()
 				{
 					case 'z':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [0][0]];//tworzymy zapasow¹ tablice dla wybranego magazynu
-						for(int i=0;i<=magazyn_jablek[0][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[0][i];
-						}
-						delete [] magazyn_jablek[0];
-						
-						magazyn_jablek[0] = new int[magazyn_nowy[0]+2];
-						for(int i=0;i<=magazyn_nowy[0][0];i++)
-						{
-							magazyn_jablek[0][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[0][0]++;
-						magazyn_jablek[0][magazyn_jablek[0][0]]=jakosc;
+						dodawanie(magazyn_jablek[0],jakosc);
 						break;
 					}	
 					case 'c':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [1][0]];//tworzymy zapasow¹ tablice dla wybranego magazynu
-						for(int i=0;i<=magazyn_jablek[1][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[1][i];
-						}
-						delete [] magazyn_jablek[1];
-						
-						magazyn_jablek[1] = new int[magazyn_nowy[1]+2];
-						for(int i=0;i<=magazyn_nowy[1][0];i++)
-						{
-							magazyn_jablek[1][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[1][0]++;
-						magazyn_jablek[1][magazyn_jablek[1][0]]=jakosc;
-						break;
+						dodawanie(magazyn_jablek[1],jakosc);
 						break;
 					}
 					case 'p':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [2][0]];//tworzymy zapasow¹ tablice dla wybranego magazynu
-						for(int i=0;i<=magazyn_jablek[2][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[0][i];
-						}
-						delete [] magazyn_jablek[0];
-						
-						magazyn_jablek[0] = new int[magazyn_nowy[2]+2];
-						for(int i=0;i<=magazyn_nowy[2][0];i++)
-						{
-							magazyn_jablek[2][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[2][0]++;
-						magazyn_jablek[2][magazyn_jablek[2][0]]=jakosc;
-						break;
+						dodawanie(magazyn_jablek[2],jakosc);
 						break;
 					}	
 					case 'r':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [3][0]];//tworzymy zapasow¹ tablice dla wybranego magazynu
-						for(int i=0;i<=magazyn_jablek[3][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[3][i];
-						}
-						delete [] magazyn_jablek[3];
-						
-						magazyn_jablek[3] = new int[magazyn_nowy[3]+2];
-						for(int i=0;i<=magazyn_nowy[3][0];i++)
-						{
-							magazyn_jablek[3][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[3][0]++;
-						magazyn_jablek[3][magazyn_jablek[3][0]]=jakosc;
-						break;
+						dodawanie(magazyn_jablek[3],jakosc);
 						break;
 					}	
 					default:
-						cout<<"nie ma takiego jablka"
+						cout<<"nie ma takiego jablka";
 						break;			
 				}
 				break;
@@ -145,60 +125,51 @@ int main()
 			{
 				char b;
 				int jakosc=0;
-				cout<<"jakie jablko chcesz usunac?\n"
+				cout<<"\njakie jablko chcesz usunac?\n"
 					<<"z-zielone\nc-czerwone\np-pomaranczowe\nr-rozowe\n";
 				cin>>b;
 				switch(b)
 				{
 					case 'z':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [0][0]];
-						for(int i=0;i<=magazyn_jablek[0][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[0][i];
-						}
-						delete [] magazyn_jablek[0];
-						
-						magazyn_jablek[0] = new int[magazyn_nowy[0]-1];
-						for(int i=0;i<=magazyn_nowy[0][0];i++)
-						{
-							magazyn_jablek[0][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[0][0]++;
-						magazyn_jablek[0][magazyn_jablek[0][0]]=jakosc;
+						usuwanie(magazyn_jablek[0]);
 						break;
 					}
 					case 'c':
 					{
-						int *magazyn_nowy=new int[magazyn_jablek [0][0]];
-						for(int i=0;i<=magazyn_jablek[0][0];i++)
-						{
-							magazyn_nowy[i]=magazyn_jablek[0][i];
-						}
-						delete [] magazyn_jablek[0];
-							
-						magazyn_jablek[0] = new int[magazyn_nowy[0]-1];
-						for(int i=0;i<=magazyn_nowy[0][0];i++)
-						{
-							magazyn_jablek[0][i]=magazyn_nowy[i];
-						}
-						magazyn_jablek[0][0]++;
-						magazyn_jablek[0][magazyn_jablek[0][0]]=jakosc;
+						usuwanie(magazyn_jablek[1]);
 						break;	
 					}
 					case 'p':
 					{
-						
+						usuwanie(magazyn_jablek[2]);
+						break;	
 					}
 					case 'r':
 					{
-						
+					usuwanie(magazyn_jablek[3]);
+						break;	
 					}
 				}
 			}
+			case 'w':
+			{
+				for( int i=0;i<4;i++)
+				{
+					for(int j=1;j<=magazyn_jablek[i][0];j++)
+						{
+							cout<<magazyn_jablek[i][j]<<" ";
+						}
+					cout<<endl;
+				}
+				break;
+			}
+			default:
+				cout<<"zly znak.\n";
+				break;
 		}
 	}
-	while();
+	while(c!='k');
 	
 	system ("PAUSE");
 	return 0;
